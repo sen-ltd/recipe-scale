@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Scale</title>
+  <meta name="description" content="Recipe ingredient scaler with fraction parsing, metric/imperial conversion, and Japanese units.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-icon">🍳</span>
+        <div>
+          <h1 class="app-title" data-i18n="appTitle">Recipe Scale</h1>
+          <p class="app-subtitle" data-i18n="appSubtitle">Scale any recipe to any serving size</p>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <!-- Language toggle -->
+        <div class="btn-group" role="group" aria-label="Language">
+          <button class="btn-toggle" data-lang="en">EN</button>
+          <button class="btn-toggle" data-lang="ja">JA</button>
+        </div>
+
+        <!-- Theme toggle -->
+        <div class="btn-group" role="group" aria-label="Theme">
+          <button class="btn-toggle" data-theme-val="light" data-i18n="themeLight">Light</button>
+          <button class="btn-toggle" data-theme-val="dark"  data-i18n="themeDark">Dark</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <!-- Input panel -->
+    <section class="input-panel">
+      <label class="field-label" for="ingredient-input" data-i18n="pasteLabel">
+        Paste your ingredient list (one per line)
+      </label>
+      <textarea
+        id="ingredient-input"
+        class="ingredient-textarea"
+        rows="8"
+        data-i18n-placeholder="pastePlaceholder"
+        placeholder="1 1/2 cups flour&#10;2 tbsp olive oil&#10;1 tsp salt&#10;200g sugar&#10;卵 3 個"
+        spellcheck="false"
+      ></textarea>
+      <div class="input-actions">
+        <button id="parse-btn" class="btn btn-primary" data-i18n="parseBtn">Parse Ingredients</button>
+        <button id="clear-btn" class="btn btn-ghost"   data-i18n="clearBtn">Clear</button>
+      </div>
+    </section>
+
+    <!-- Controls bar -->
+    <section class="controls-bar">
+      <!-- Servings -->
+      <div class="servings-control">
+        <div class="serving-field">
+          <label for="original-servings" data-i18n="originalServings">Original Servings</label>
+          <input id="original-servings" type="number" min="0.5" step="0.5" value="4">
+        </div>
+        <div class="serving-arrow" aria-hidden="true">→</div>
+        <div class="serving-field">
+          <label for="target-servings" data-i18n="targetServings">Target Servings</label>
+          <input id="target-servings" type="number" min="0.5" step="0.5" value="4">
+        </div>
+        <span id="factor-display" class="factor-display"></span>
+      </div>
+
+      <!-- Unit system -->
+      <div class="unit-control">
+        <span class="control-label" data-i18n="unitSystem">Units</span>
+        <div class="btn-group" role="group">
+          <button class="btn-toggle" data-unit="original">Original</button>
+          <button class="btn-toggle" data-unit="metric">Metric</button>
+          <button class="btn-toggle" data-unit="imperial">Imperial</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lists -->
+    <section class="lists-section">
+      <div class="list-column">
+        <h2 class="column-title" data-i18n="originalList">Original</h2>
+        <ul id="original-list" class="ingredient-list">
+          <li class="empty-msg" data-i18n="noIngredients">
+            No ingredients yet. Paste a list above and click Parse.
+          </li>
+        </ul>
+      </div>
+
+      <div class="list-divider" aria-hidden="true">→</div>
+
+      <div class="list-column">
+        <h2 class="column-title" data-i18n="scaledList">Scaled</h2>
+        <ul id="scaled-list" class="ingredient-list">
+          <li class="empty-msg" data-i18n="noIngredients">
+            No ingredients yet. Paste a list above and click Parse.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Copy button -->
+    <div class="copy-row">
+      <button id="copy-btn" class="btn btn-secondary" data-i18n="copyBtn">
+        Copy Scaled Recipe
+      </button>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <span data-i18n="footer">Built by SEN LLC</span>
+  </footer>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
