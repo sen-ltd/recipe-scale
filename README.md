@@ -53,3 +53,10 @@ Requires Node.js 20+.
 ## License
 
 MIT © 2026 SEN LLC (SEN 合同会社)
+
+<!-- sen-publish:links -->
+## Links
+
+- 🌐 Demo: https://sen.ltd/portfolio/recipe-scale/
+- 📝 dev.to: https://dev.to/sendotltd/a-recipe-scaler-that-parses-1-12-cups-and-displays-3-34-with-japanese-units-2989
+<!-- /sen-publish:links -->
